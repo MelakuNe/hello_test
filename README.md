@@ -43,8 +43,7 @@ Network Parameters:
 * Binary CrossEntropy Loss
 
 Lastly, prediction using the inference dataset were made by loading the saved model :\
- ![image](https://user-images.githubusercontent.com/96078343/177985159-74046333-079b-4dd6-8af2-0eab32be1cc8.png)
-![image](https://user-images.githubusercontent.com/96078343/177985521-1f078b59-3a76-4a5c-a061-189a11a2b458.png)
+![image](https://user-images.githubusercontent.com/96078343/177985760-ad7f48ca-7b38-4623-96bf-8beec1a30b02.png)
 
 
 <font face="Arial">Thank you for visiting!</font>
