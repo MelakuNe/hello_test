@@ -42,7 +42,7 @@ Network Parameters:
 * Adam Optimizer 
 * Binary CrossEntropy Loss
 
-Lastly, by loading the saved model prediction using the inference dataset were made:
+Lastly, by loading the saved model prediction using the inference dataset were made:\
 ![image](https://user-images.githubusercontent.com/96078343/177985068-5d5c788a-3d23-4891-8ecf-9d257b3ac5e5.png) ![image](https://user-images.githubusercontent.com/96078343/177985159-74046333-079b-4dd6-8af2-0eab32be1cc8.png)
 
 
