@@ -19,7 +19,7 @@ Used:
 * OpenCV(4.6.0) 
 * CMake(3.23.2)
 
-The code is written in C++, so you need a C++ pytorch distribution, OpenCV, CMake to be able to run this project, you can find the steps on installing all this in the 
+The code is written in C++, so you need a C++ pytorch distribution, OpenCV, CMake to be able to run this project, you can find the steps to install all this in the 
 previous project I posted. \
 The model architecture looks like as follows:
 ![image](https://user-images.githubusercontent.com/96078343/177979924-4f9872c2-4093-4f85-bda4-ef7acb2e9b31.png)
@@ -40,7 +40,11 @@ Network Parameters:
 * Rectifier Linear Unit
 * Sigmoid on the output
 * Adam Optimizer 
-* Rectifier Linear Unit
 * Binary CrossEntropy Loss
 
-<font face="Arial">Thank you for visiting.</font>
+Lastly, by loading the saved model prediction using the inference dataset were made:
+![image](https://user-images.githubusercontent.com/96078343/177985068-5d5c788a-3d23-4891-8ecf-9d257b3ac5e5.png)
+![image](https://user-images.githubusercontent.com/96078343/177985159-74046333-079b-4dd6-8af2-0eab32be1cc8.png)
+
+
+<font face="Arial">Thank you for visiting!</font>
