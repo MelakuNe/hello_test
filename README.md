@@ -44,6 +44,7 @@ Network Parameters:
 
 Lastly, prediction using the inference dataset were made by loading the saved model :\
 ![image](https://user-images.githubusercontent.com/96078343/177985760-ad7f48ca-7b38-4623-96bf-8beec1a30b02.png)
+![image](https://user-images.githubusercontent.com/96078343/177985829-e1b491ac-29aa-4923-a584-047ed0cb4094.png)
 
 
 <font face="Arial">Thank you for visiting!</font>
