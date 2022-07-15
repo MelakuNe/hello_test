@@ -24,7 +24,7 @@ batch1 = torch::nn::BatchNorm2d(16);
 conv2 = torch::nn::Conv2d(torch::nn::Conv2dOptions(16, 16, 3).padding({ 1,1 }));
 batch2 = torch::nn::BatchNorm2d(16);
 </pre>
-This are just the two convolution layers, there ReLU follows and maxpooling for the encoder and decoder has this strucure plus upsampling
+This are just the two convolution layers, there ReLU follows and maxpooling for the encoder and decoder has this structure plus upsampling
 <pre>
 upConv1 = torch::nn::ConvTranspose2d(torch::nn::ConvTranspose2dOptions(256, 128, 2).stride(2));
 </pre>
