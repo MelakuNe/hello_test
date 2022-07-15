@@ -2,13 +2,6 @@
 <h2>Deep Learning Model with C++ at VeinCV</h2>
 <h3>Title: UNET implementation using Pytorch C++ </h3>
 
-This project is about binary classification of an image, I am using image of cats and dogs, you can find the full dataset
-in the following link https://www.kaggle.com/c/dogs-vs-cats or https://www.microsoft.com/en-us/download/confirmation.aspx?id=54765 .
-It has total of 25000 images(12500 each), but I used only some of it.
-*	60 images for training (30 each)
-*	16 separate images for validation (8 each)
-*	20 separate images for inference (10 each)
-
 This project is about implementing UNET architecture. I used a dataset found here https://www.kaggle.com/c/tgs-salt-identification-challenge which contains images of the earth at different locations aimed to do segmentation to know where salt deposits exist. So the goal is to do semantic segmentation and identify which part of the earth in the image contains salt or sediment (binary classification). Since training with all this data takes a lot of time and requires high computational power, I only used a small part of the dataset.
 * 18 images for training 
 * 9 separate images for validation 
