@@ -1,6 +1,6 @@
 # VCV-CPP
 <h2>Deep Learning Model with C++ at VeinCV</h2>
-<h3>Title: Binary Classification of Images using Pytorch C++ </h3>
+<h3>Title: UNET implementation using Pytorch C++ </h3>
 
 This project is about binary classification of an image, I am using image of cats and dogs, you can find the full dataset
 in the following link https://www.kaggle.com/c/dogs-vs-cats or https://www.microsoft.com/en-us/download/confirmation.aspx?id=54765 .
@@ -9,9 +9,10 @@ It has total of 25000 images(12500 each), but I used only some of it.
 *	16 separate images for validation (8 each)
 *	20 separate images for inference (10 each)
 
-To deal with processing of the files inside directory I used an interface called <b>'dirent.h'</b> which I came across lately. It is good and simple to use, 
-I recommend using it for other projects too. For window users it requires a little integration, you can find the 
-download link and brief explanation of steps in the link https://github.com/tronkko/dirent. For UNIX, it exists as a standard library, I think!
+This project is about implementing UNET architecture. I used a dataset found here https://www.kaggle.com/c/tgs-salt-identification-challenge which contains images of the earth at different locations aimed to do segmentation to know where salt deposits exist. So the goal is to do semantic segmentation and identify which part of the earth in the image contains salt or sediment (binary classification). Since training with all this data takes a lot of time and requires high computational power, I only used a small part of the dataset.
+* 18 images for training 
+* 9 separate images for validation 
+* 5 separate images for prediction
 
 Used: 
 * C++(17++)
@@ -19,31 +20,31 @@ Used:
 * OpenCV(4.6.0) 
 * CMake(3.23.2)
 
-The code is written in C++, so you need a C++ pytorch distribution, OpenCV, CMake to be able to run this project, you can find the steps to install all this in the 
-previous project I posted. \
-The model architecture looks like as follows:
-![image](https://user-images.githubusercontent.com/96078343/177979924-4f9872c2-4093-4f85-bda4-ef7acb2e9b31.png)
-
+The code is written in C++, so you need a C++ pytorch distribution, OpenCV, CMake, dirent interface to be able to run this project, you can find the steps to install all this in the previous projects I posted. \
+The UNET architecture looks like as follows:
+![image](https://user-images.githubusercontent.com/96078343/179245823-a344998c-5ccd-44fc-b584-9db8d83ecbb2.png)
+\
+<br>Sample code</br>
 <pre>
-conv1 = torch::nn::Conv2d(torch::nn::Conv2dOptions(3, 32, 3).stride(2));
-batch_norm1 = torch::nn::BatchNorm2d(32);
-conv2 = torch::nn::Conv2d(torch::nn::Conv2dOptions(32, 64, 3).stride(2));
-batch_norm2 = torch::nn::BatchNorm2d(64);
-
-auto size = get_size(channel, height, width);
-
-fc1 = torch::nn::Linear(size, 50);
-fc2 = torch::nn::Linear(50, 1);
+conv1 = torch::nn::Conv2d(torch::nn::Conv2dOptions(1, 16, 3).padding({1,1}));
+batch1 = torch::nn::BatchNorm2d(16);
+conv2 = torch::nn::Conv2d(torch::nn::Conv2dOptions(16, 16, 3).padding({ 1,1 }));
+batch2 = torch::nn::BatchNorm2d(16);
 </pre>
+This are just the two convolution layers, there ReLU follows and maxpooling for the encoder and decoder has this strucure plus upsampling
+<pre>
+upConv1 = torch::nn::ConvTranspose2d(torch::nn::ConvTranspose2dOptions(256, 128, 2).stride(2));
+</pre>
+In the decoder this output will be combined with the output of the corresponding encoder after ReLU.
 
 Network Parameters:
 * Rectifier Linear Unit
 * Sigmoid on the output
 * Adam Optimizer 
 * Binary CrossEntropy Loss
+* Maxpooling
 
-Lastly, prediction using the inference dataset were made by loading the saved model :\
-![image](https://user-images.githubusercontent.com/96078343/177985760-ad7f48ca-7b38-4623-96bf-8beec1a30b02.png)
-![image](https://user-images.githubusercontent.com/96078343/177985945-db9026bd-c3e8-4415-b403-d46967a644bc.png)
-
+Lastly, prediction were made by loading the saved model :\
+![image](https://user-images.githubusercontent.com/96078343/179247013-a7308a32-fdef-4475-b23e-90836531e362.png)
+![image](https://user-images.githubusercontent.com/96078343/179247034-6a12f929-29d7-4968-97cd-bd8971579827.png)
 <font face="Arial">Thank you for visiting!</font>
