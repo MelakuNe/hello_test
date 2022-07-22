@@ -1,43 +1,53 @@
 # VCV-CPP
 <h2>Deep Learning Model with C++ at VeinCV</h2>
-<h3>Title: UNET implementation using Pytorch C++ </h3>
+<h3>Title: Running on Linux </h3>
+So far I have been demostrating different projects using Pytorch C++ and the operating system I was running it on is Windows. In todays report I will show how to do the same thing in Linux operating system. I am using Windows as a host and Ubuntu 22.04 LTS as a guest through virtualbox.
 
-This project is about implementing UNET architecture. I used a dataset found here https://www.kaggle.com/c/tgs-salt-identification-challenge which contains images of the earth at different locations aimed to do segmentation to know where salt deposits exist. So the goal is to do semantic segmentation and identify which part of the earth in the image contains salt or sediment (binary classification). Since training with all this data takes a lot of time and requires high computational power, I only used a small part of the dataset.
-* 18 images for training 
-* 9 separate images for validation 
-* 5 separate images for prediction
+Requirements: 
+* C++
+* Libtorch
+* OpenCV 
+* CMake
+* Dirent
+The project is done with cmake, because it is the best too availalble to work with the Pytorch distribution and OpenCV and others.
+So, let's see how we can havel all this tools in our system. \
+let's start from installing OpenCV, I will just provide you the link for the installation because it is very long and explaining it here is useless. In the following link you will find detailed procedures of the installation. http://techawarey.com/programming/install-opencv-c-c-in-ubuntu-18-04-lts-step-by-step-guide/, this one has backup I used this. Alos in the official documentation page you can find it https://docs.opencv.org/3.4/d7/d9f/tutorial_linux_install.html.
 
-Used: 
-* C++(17++)
-* Libtorch(1.11)
-* OpenCV(4.6.0) 
-* CMake(3.23.2)
-
-The code is written in C++, so you need a C++ pytorch distribution, OpenCV, CMake, dirent interface to be able to run this project, you can find the steps to install all this in the previous projects I posted. \
-The UNET architecture looks like as follows:
-![image](https://user-images.githubusercontent.com/96078343/179245823-a344998c-5ccd-44fc-b584-9db8d83ecbb2.png)
-\
-<br>Sample code</br>
+If you have followed all steps in the link provided, you should have by now OpenCV in your Linux system whatever distribution you are using. Before moving on to the next step, check its version if it is installed properly. 
+<pre>$ pkg-config --modversion opencv</pre>
+if this command prompt package opencv not found, try the following and it will be fixed if you have followed everything exactly.
 <pre>
-conv1 = torch::nn::Conv2d(torch::nn::Conv2dOptions(1, 16, 3).padding({1,1}));
-batch1 = torch::nn::BatchNorm2d(16);
-conv2 = torch::nn::Conv2d(torch::nn::Conv2dOptions(16, 16, 3).padding({ 1,1 }));
-batch2 = torch::nn::BatchNorm2d(16);
+$ apt-file search opencv.pc  or apt-file search opencv4.pc
+$ ls /usr/local/lib/pkgconfig/
+$ sudo cp /usr/local/lib/pkgconfig/opencv4.pc  /usr/lib/x86_64-linux-gnu/pkgconfig/opencv.pc
+$ pkg-config --modversion opencv
 </pre>
-This are just the two convolution layers, there ReLU follows and maxpooling for the encoder and decoder has this structure plus upsampling
+Alright! now we have OpenCV installed in out system globally, the next step is to install Pytorch distribution of C++, and thanks to cmake it is very easy. Download the compatable type of libtorch to you system from https://pytorch.org/get-started/locally/ then extract the folder. I will show you how to do it easily or you can follow the officail webpage https://pytorch.org/tutorials/advanced/cpp_frontend.html. You just need to create the following CMakeLists.txt file.
 <pre>
-upConv1 = torch::nn::ConvTranspose2d(torch::nn::ConvTranspose2dOptions(256, 128, 2).stride(2));
+cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
+project(CppPytorch) # CppPytorch is the name of the project(you can change it as you want)
+set(CMAKE_PREFIX_PATH /home/melie/Downloads/libtorch) # This is the path of the libtorch you just downloaded  
+find_package(Torch REQUIRED)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${TORCH_CXX_FLAGS}")
+add_executable(${PROJECT_NAME} main.cpp)
+target_link_libraries(${PROJECT_NAME} "${TORCH_LIBRARIES}")
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 14)
 </pre>
-In the decoder this output will be combined with the output of the corresponding encoder after ReLU.
+Good! now we have Pytorch in C++. But still we may want to have both torch and opencv at the same time, easy! just add the following two line into the cmake file and then you are good to go. Here there is no need to set the path of opencv because it is installed globally, not in local folder.
+<pre>
+find_package(OpenCV REQUIRED)
+target_link_libraries(${PROJECT_NAME} "${OpenCV_LIBS}")
+</pre>
+In general the structure looks like as follows:
+|
+| build
+| main.cpp
+| CMakeLists.txt
+then to build it:
+| build
+---- cmake ..
+---- make
+and to run it:
+| build
+----./CppPytorch
 
-Network Parameters:
-* Rectifier Linear Unit
-* Sigmoid on the output
-* Adam Optimizer 
-* Binary CrossEntropy Loss
-* Maxpooling
-
-Lastly, prediction were made by loading the saved model :\
-![image](https://user-images.githubusercontent.com/96078343/179247013-a7308a32-fdef-4475-b23e-90836531e362.png)
-![image](https://user-images.githubusercontent.com/96078343/179247034-6a12f929-29d7-4968-97cd-bd8971579827.png)
-<font face="Arial">Thank you for visiting!</font>
