@@ -1,7 +1,7 @@
 # VCV-CPP
 <h2>Deep Learning Model with C++ at VeinCV</h2>
 <h3>Title: Running on Linux </h3>
-So far I have been demonstrating different projects using Pytorch C++ and the operating system I was running it on is Windows. In today's report, I will show how to do the same thing in Linux operating system. I am using Windows as a host and Ubuntu 22.04 LTS as a guest through VirtualBox.
+So far I have been demonstrating different projects using Pytorch C++ and the operating system I was running it on was Windows. In today's report, I will show how to do the same thing in Linux operating system. I am using Windows as a host and Ubuntu 22.04 LTS as a guest through VirtualBox.
 
 Requirements:
 * C++
