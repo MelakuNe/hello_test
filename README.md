@@ -3,15 +3,15 @@
 <h3>Title: Running on Linux </h3>
 So far I have been demostrating different projects using Pytorch C++ and the operating system I was running it on is Windows. In todays report I will show how to do the same thing in Linux operating system. I am using Windows as a host and Ubuntu 22.04 LTS as a guest through virtualbox.
 
-Requirements: 
+<br>Requirements:</br> 
 * C++
 * Libtorch
 * OpenCV 
 * CMake
-* Dirent
+* Dirent \
 The project is done with cmake, because it is the best too availalble to work with the Pytorch distribution and OpenCV and others.
 So, let's see how we can havel all this tools in our system. \
-let's start from installing OpenCV, I will just provide you the link for the installation because it is very long and explaining it here is useless. In the following link you will find detailed procedures of the installation. http://techawarey.com/programming/install-opencv-c-c-in-ubuntu-18-04-lts-step-by-step-guide/, this one has backup I used this. Alos in the official documentation page you can find it https://docs.opencv.org/3.4/d7/d9f/tutorial_linux_install.html.
+Let's start from installing OpenCV, I will just provide you the link for the installation because it is very long and explaining it here is useless. In the following link you will find detailed procedures of the installation. http://techawarey.com/programming/install-opencv-c-c-in-ubuntu-18-04-lts-step-by-step-guide/, this one has backup I used this. Alos in the official documentation page you can find it https://docs.opencv.org/3.4/d7/d9f/tutorial_linux_install.html.
 
 If you have followed all steps in the link provided, you should have by now OpenCV in your Linux system whatever distribution you are using. Before moving on to the next step, check its version if it is installed properly. 
 <pre>$ pkg-config --modversion opencv</pre>
