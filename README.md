@@ -45,13 +45,32 @@ build
 main.cpp
 CMakeLists.txt
 </pre>
-then to build it execute the following two command in the build directory.
+then to build it execute the following two commands in the build directory.
 <pre>
 cmake ..
 make
-</pre>build
-and to run it: 
+</pre>
+and to run it also inside build directory: 
 <pre>
 ./CppPytorch
 </pre>
+The structure of the two project I pushed are the same as the above one just only their name is different.\
+<br>Edge Detection</br>
+<pre>
+cmake ..
+make
+./edge
+</pre>
+![image](https://user-images.githubusercontent.com/96078343/180441591-91d21aaf-7e7a-425a-80bc-2ea5df9ae562.png)
+<br>Classification</br>
+<pre>
+cmake ..
+make
+./classification
+</pre>
+![image](https://user-images.githubusercontent.com/96078343/180442185-52d666a8-236b-4e53-852b-1248a8e27553.png)
+I used the same code I pushed before. However, I have observed some strange things when I run this projects on Ubuntu.\
+1. The first thing is the size of build file: when I run it on Windows Visual Studio IDE its size was morethan 1 GB, wheras on Ubuntu Visual Studio Code it is less than 10 MB. This is amazing, because last time I couldn't push the whole project to the github because of the size so I had to remove some file from the build directory. But now everything is pushed so you can just clone and run it easily.
+2. The second thing is the speed, still it is CPU I don't have GPU but during training the speed is so good on Ubuntu.
 
+<br>I think that is all, thank you so much</br>
