@@ -8,7 +8,7 @@ So far I have been demostrating different projects using Pytorch C++ and the ope
 * Libtorch
 * OpenCV 
 * CMake
-* Dirent 
+* Dirent (we don't need external installation as for Windows, it is available for Linux)
 
 The project is done with cmake, because it is the best tool availalble to work with the Pytorch distribution and OpenCV and others.
 So, let's see how we can havel all this tools in our system. \
