@@ -9,7 +9,8 @@ So far I have been demostrating different projects using Pytorch C++ and the ope
 * OpenCV 
 * CMake
 * Dirent \
-The project is done with cmake, because it is the best too availalble to work with the Pytorch distribution and OpenCV and others.
+
+The project is done with cmake, because it is the best tool availalble to work with the Pytorch distribution and OpenCV and others.
 So, let's see how we can havel all this tools in our system. \
 Let's start from installing OpenCV, I will just provide you the link for the installation because it is very long and explaining it here is useless. In the following link you will find detailed procedures of the installation. http://techawarey.com/programming/install-opencv-c-c-in-ubuntu-18-04-lts-step-by-step-guide/, this one has backup I used this. Alos in the official documentation page you can find it https://docs.opencv.org/3.4/d7/d9f/tutorial_linux_install.html.
 
@@ -39,15 +40,14 @@ find_package(OpenCV REQUIRED)
 target_link_libraries(${PROJECT_NAME} "${OpenCV_LIBS}")
 </pre>
 In general the structure looks like as follows:
-|
-| build
-| main.cpp
-| CMakeLists.txt
+     build\ 
+     main.cpp\
+    CMakeLists.txt
 then to build it:
-| build
----- cmake ..
----- make
-and to run it:
-| build
-----./CppPytorch
+    build
+      $ cmake ..\
+      $ make
+and to run it: 
+   build
+     ./CppPytorch
 
