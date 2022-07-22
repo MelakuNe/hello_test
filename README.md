@@ -8,7 +8,7 @@ So far I have been demostrating different projects using Pytorch C++ and the ope
 * Libtorch
 * OpenCV 
 * CMake
-* Dirent \
+* Dirent 
 
 The project is done with cmake, because it is the best tool availalble to work with the Pytorch distribution and OpenCV and others.
 So, let's see how we can havel all this tools in our system. \
@@ -39,15 +39,19 @@ Good! now we have Pytorch in C++. But still we may want to have both torch and o
 find_package(OpenCV REQUIRED)
 target_link_libraries(${PROJECT_NAME} "${OpenCV_LIBS}")
 </pre>
-In general the structure looks like as follows:
-     build\ 
-     main.cpp\
-    CMakeLists.txt
-then to build it:
-    build
-      $ cmake ..\
-      $ make
+In general the structure looks like as follows, first create the folder build and cmake, main and other files.
+<pre>
+build 
+main.cpp
+CMakeLists.txt
+</pre>
+then to build it execute the following two command in the build directory.
+<pre>
+cmake ..
+make
+</pre>build
 and to run it: 
-   build
-     ./CppPytorch
+<pre>
+./CppPytorch
+</pre>
 
